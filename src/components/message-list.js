@@ -1,22 +1,18 @@
 'use strict'
 
-import React, { Component } from 'react'
+import React from 'react'
 import Message from 'components/message'
 
-class MessageList extends Component {
-  render () {
-    return (
-      <ul>
-        {this.props.messages.map((message) => (
-          <Message
-            text={message.text}
-            key={message.text}
-            color={message.color}
-          />
-        ))}
-      </ul>
-    )
-  }
-}
+const MessageList = ({ messages }) => (
+  <ul>
+    {messages.map((message) => (
+      <Message
+        text={message.text}
+        key={message.text}
+        color={message.color}
+      />
+    ))}
+  </ul>
+)
 
 export default MessageList
