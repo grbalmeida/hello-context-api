@@ -8,11 +8,13 @@ class App extends PureComponent {
   constructor () {
     super()
 
-    const subscriptions = []
+    let subscriptions = []
 
     const subscribe = (f) => {
       subscriptions.push(f)
-      return () => subscriptions.filter((func) => func !== f)
+      return () => {
+        subscriptions = subscriptions.filter((func) => func !== f)
+      }
     }
 
     const setColor = (color, update) => (e) => {
