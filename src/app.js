@@ -5,9 +5,19 @@ import PropTypes from 'prop-types'
 import MessageList from 'components/message-list'
 
 class App extends PureComponent {
+  constructor () {
+    super()
+    this.state = { color: 'purple' }
+
+    this.setColor = (color) => (e) => {
+      this.setState({ color })
+    }
+  }
+
   getChildContext () {
     return {
-      color: 'purple'
+      color: this.state.color,
+      setColor: this.setColor
     }
   }
 
@@ -15,9 +25,9 @@ class App extends PureComponent {
     return (
       <MessageList
         messages={[
-          { text: 'hey' },
-          { text: 'ho' },
-          { text: `let's go` }
+          { text: 'hey', color: 'orange' },
+          { text: 'ho', color: 'lightblue' },
+          { text: `let's go`, color: 'red' }
         ]}
       />
     )
@@ -25,7 +35,8 @@ class App extends PureComponent {
 }
 
 App.childContextTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
+  setColor: PropTypes.func
 }
 
 export default App

@@ -11,6 +11,7 @@ class MessageList extends Component {
           <Message
             text={message.text}
             key={message.text}
+            color={message.color}
           />
         ))}
       </ul>
